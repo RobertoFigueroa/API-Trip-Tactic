@@ -15,8 +15,34 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url, include
+from rest_framework import routers
+
+from cities.views import CityViewSet
+from countries.views import CountryViewSet
+from events.views import EventViewSet
+from places.views import PlaceViewSet
+from plans.views import PlanViewSet
+from transportProviders.views import TransportProviderViewSet
+from transports.views import TransportViewSet
+from trips.views import TripViewSet
+from users.views import UserViewSet
+from usersFeedBacK.views import UserFeedBackViewSet
+
+router = routers.DefaultRouter()
+
+router.register(r'cities', CountryViewSet)
+router.register(r'countries', CountryViewSet)
+router.register(r'events', EventViewSet)
+router.register(r'places', PlaceViewSet)
+router.register(r'plans', PlanViewSet)
+router.register(r'transportProviders', TransportProviderViewSet)
+router.register(r'transports', TransportViewSet)
+router.register(r'trips', TripViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'userFeedBack', UserFeedBackViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls'))
+    url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^api/v1/', include(router.urls)),
 ]
