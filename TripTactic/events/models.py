@@ -16,3 +16,9 @@ class Event(models.Model):
         null=True,
         blank=True
     )
+    transport = models.ForeignKey(
+        'transports.Transport',
+        on_delete= models.CASCADE,
+        null=True,
+        blank=True
+    )

@@ -3,6 +3,7 @@ from rest_framework import serializers
 from events.models import Event
 from places.serializers import PlaceSerializer
 from plans.serializers import PlanSerializer
+from transports.serializers import TranportSerializer
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
@@ -13,5 +14,6 @@ class EventSerializer(serializers.ModelSerializer):
             'hour',
             'description',
             'place',
-            'plan'
+            'plan',
+            'transport'
         )

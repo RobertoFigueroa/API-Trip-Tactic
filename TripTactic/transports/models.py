@@ -10,8 +10,9 @@ class Transport(models.Model):
         blank=True
     )
     destination = models.ForeignKey(
-        'countries.Country',
+        'places.Place',
         on_delete = models.CASCADE,
         null=True,
         blank=True
     )
+    
