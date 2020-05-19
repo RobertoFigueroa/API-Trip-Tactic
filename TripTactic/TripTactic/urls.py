@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url, include
 from rest_framework import routers
+from rest_framework_jwt.views import (
+    obtain_jwt_token,
+    refresh_jwt_token
+)
 
 from cities.views import CityViewSet
 from countries.views import CountryViewSet
@@ -45,4 +49,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^api/v1/', include(router.urls)),
+    url(r'^api/v1/token-auth/', obtain_jwt_token),
+    url(r'^api/v1/token-refresh/', refresh_jwt_token),
 ]
