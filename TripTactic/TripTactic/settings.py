@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import datetime
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,9 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_onvfd^zp0=e$-++g+6w-oi$!x@@od39-=pb&20hg$z==gdp7b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -61,7 +63,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
 
 ROOT_URLCONF = 'TripTactic.urls'
 
@@ -87,17 +91,23 @@ WSGI_APPLICATION = 'TripTactic.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dkzdqdrx',
-        'USER': 'dkzdqdrx',
-        'PASSWORD': 'NBIB9ik1yL7u3OBThKxLeOMZ5a1zgSug',
-        'HOST': 'isilo.db.elephantsql.com',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'dkzdqdrx',
+#         'USER': 'dkzdqdrx',
+#         'PASSWORD': 'NBIB9ik1yL7u3OBThKxLeOMZ5a1zgSug',
+#         'HOST': 'isilo.db.elephantsql.com',
+#         'PORT': '5432',
+#     }
+# }
 
+DATABASE = {
+    'default': dj_database_url.config(
+        default=config('DTABASE_URL')
+    )
+
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -135,7 +145,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+STATICFILES_DIR = (
+    os.path.join(BASE_DIR, 'static')
+)
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -158,3 +174,5 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend', 
     'guardian.backends.ObjectPermissionBackend'
     )
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

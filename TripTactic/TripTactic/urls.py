@@ -20,6 +20,9 @@ from rest_framework_jwt.views import (
     obtain_jwt_token,
     refresh_jwt_token
 )
+from django.config import settings
+from django.config.urls.static import static
+
 
 from cities.views import CityViewSet
 from countries.views import CountryViewSet
@@ -51,4 +54,4 @@ urlpatterns = [
     url(r'^api/v1/', include(router.urls)),
     url(r'^api/v1/token-auth/', obtain_jwt_token),
     url(r'^api/v1/token-refresh/', refresh_jwt_token),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
