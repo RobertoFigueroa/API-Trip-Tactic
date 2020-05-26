@@ -20,8 +20,8 @@ from rest_framework_jwt.views import (
     obtain_jwt_token,
     refresh_jwt_token
 )
-from django.config import settings
-from django.config.urls.static import static
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 from cities.views import CityViewSet
