@@ -1,3 +1,0 @@
-[submodule "djangoRestFrameworkViewsetPermissions"]
-	path = djangoRestFrameworkViewsetPermissions
-	url = https://github.com/samuelchvez/django-rest-framework-viewset-permissions.git
