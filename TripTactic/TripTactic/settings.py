@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'TripTactic.wsgi.application'
 
 DATABASE = {
     'default': dj_database_url.config(
-        default=config('DTABASE_URL')
+        default=config('DATABASE_URL')
     )
 
 }
