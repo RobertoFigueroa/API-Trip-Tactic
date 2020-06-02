@@ -37,7 +37,7 @@ from usersFeedBacK.views import UserFeedBackViewSet
 
 router = routers.DefaultRouter()
 
-router.register(r'cities', CountryViewSet)
+router.register(r'cities', CityViewSet)
 router.register(r'countries', CountryViewSet)
 router.register(r'events', EventViewSet)
 router.register(r'places', PlaceViewSet)
