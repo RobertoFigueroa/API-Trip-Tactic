@@ -9,6 +9,7 @@ class TranportSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transport
         fields=(
+	    'id',
             'transport_type',
             'price',
             'transportProvider',
