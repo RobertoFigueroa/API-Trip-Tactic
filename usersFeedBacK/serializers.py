@@ -8,6 +8,7 @@ class UserFeedBackSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserFeedback
         fields=(
+	    'id',
             'comment',
             'score',
             'user_id',
