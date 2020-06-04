@@ -2,6 +2,10 @@
 
 _Backend para el app Trip-Tactic_
 
+### Deploy 
+
+Este proyecto se encuentra en Heroku por lo que al correr la aplicación como cliente no es necesario levantar el backen 
+si desea las credeciales de dicho proyecto puede solicitarlas al siguiente correro: [Roberto](fig18306@uvg.edu.gt)
 
 
 ### Pre-requisitos 📋
